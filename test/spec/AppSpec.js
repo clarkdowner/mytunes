@@ -25,7 +25,6 @@ describe('App', function() {
     expect(app.get('currentSong')).to.be.an('object');
     app.get('library').at(0).play();
     expect(app.get('currentSong')).to.equal(app.get('library').at(0));
-    console.log(app);
   });
 
   it('queues the next song when an "enqueue" event is fired', function() {
