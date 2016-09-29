@@ -43,7 +43,6 @@ describe('LibraryView', function() {
       };
 
       fakeResponse = JSON.stringify({ results: fakeSongData });
-      // console.log(fakeResponse);
     });
 
     afterEach(function() {
@@ -54,10 +53,6 @@ describe('LibraryView', function() {
       var FakeLibraryView = LibraryView.extend({ render: sinon.spy() });
       view = new FakeLibraryView({ collection: new Songs() });
       expect(view.render).to.have.been.calledOnce;
-
-      console.log(view);
-
-      console.log(requests);
 
       requests[0].respond(200, { 'Content-Type': 'application/json' }, fakeResponse);
       expect(view.render).to.have.been.calledTwice;
