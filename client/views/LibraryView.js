@@ -6,6 +6,27 @@ var LibraryView = Backbone.View.extend({
   initialize: function() {
     this.render();
 
+    var context = this;
+
+    $.ajax({
+      type: 'GET',
+      url: 'https://api.parse.com/1/classes/songs/',
+      success: function(data) {
+        // console.log('this: ', this);
+        // LibraryView.render();
+        console.log('data is: ', data);
+        console.log('libary: ', context.collection);
+        // console.log('LibraryView: ', LibraryView;
+        data.results.forEach(function(obj) {
+          context.collection.add(obj);
+        });
+
+        context.render();
+
+        console.log('libary after: ', context.collection);
+
+      }
+    });
   },
 
   render: function() {
